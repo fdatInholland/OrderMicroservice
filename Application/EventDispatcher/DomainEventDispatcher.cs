@@ -1,5 +1,4 @@
 ﻿using OrderMicroservice.Domain.Interfaces;
-using System;
 
 namespace OrderMicroservice.Application.EventDispatcher
 {

@@ -4,17 +4,20 @@ namespace OrderMicroservice.Domain.Orders
 {
     public class Order : IAggregateRoot
     {
+        //YUCK!!
         private readonly List<OrderItem> _items = new();
         private readonly List<IDomainEvent> _domainEvents = new();
 
         public Guid OrderId { get; private set; }
         public DateTime CreatedAt { get; private set; }
 
+        //Kinda a good idea....
         public IReadOnlyCollection<OrderItem> Items => _items.AsReadOnly();
         public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
+
         public decimal Total => _items.Sum(i => i.GetTotal());
 
-        private Order() { } // For EF Core
+        private Order() { } 
 
         public Order(Guid orderid)
         {

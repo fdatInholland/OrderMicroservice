@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Application.Sevices;
+using Domain.Entities;
+using Domain.Entities.ValueObjects;
 using Microsoft.AspNetCore.Mvc;
-using OrderMicroservice.Application.Services;
 
 namespace OrderMicroservice.Controllers
 {
@@ -18,6 +19,8 @@ namespace OrderMicroservice.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateOrder()
         {
+            //var Email = EmailAddress.From("blaat@com");
+            
             var orderId = await _orderService.CreateOrderAsync();
             return Ok(new { OrderId = orderId });
         }

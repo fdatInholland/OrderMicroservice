@@ -1,9 +1,9 @@
+using Application.EventDispatcher;
+using Application.Sevices;
+using Domain.Events.Order;
+using Domain.Interfaces;
+using Infrastructure.Persistance;
 using Microsoft.EntityFrameworkCore;
-using OrderMicroservice.Application.EventDispatcher;
-using OrderMicroservice.Application.Services;
-using OrderMicroservice.Domain.Events;
-using OrderMicroservice.Domain.Interfaces;
-using OrderMicroservice.Infrastructure.Persistance;
 
 namespace OrderMicroservice
 {

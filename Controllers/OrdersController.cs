@@ -1,7 +1,5 @@
-﻿using Application.Sevices;
-using Domain.Entities;
-using Domain.Entities.ValueObjects;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using OrderMicroservice.Application.Services;
 
 namespace OrderMicroservice.Controllers
 {

@@ -1,9 +1,9 @@
-using Application.EventDispatcher;
-using Application.Sevices;
-using Domain.Events.Order;
-using Domain.Interfaces;
-using Infrastructure.Persistance;
 using Microsoft.EntityFrameworkCore;
+using OrderMicroservice.Application.EventDispatcher;
+using OrderMicroservice.Application.Services;
+using OrderMicroservice.Domain.Events;
+using OrderMicroservice.Domain.Interfaces;
+using OrderMicroservice.Infrastructure.Persistance;
 
 namespace OrderMicroservice
 {
@@ -13,11 +13,11 @@ namespace OrderMicroservice
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            //In-memory for demo
-            builder.Services.AddDbContext<AppDBContext>(opt =>
+            //In-memory DB for demo
+            builder.Services.AddDbContext<AppDbContext>(opt =>
                 opt.UseInMemoryDatabase("OrdersDb"));
 
-            builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+            builder.Services.AddScoped<IOrderRepsitory, OrderRepository>();
             builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<DomainEventDispatcher>();
             builder.Services.AddScoped<IEventHandler<OrderCreatedEvent>, OrderCreatedEventHandler>();
@@ -30,7 +30,6 @@ namespace OrderMicroservice
             app.MapControllers();
 
             app.Run();
-           
         }
     }
 }

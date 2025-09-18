@@ -3,17 +3,17 @@ using OrderMicroservice.Domain.Interfaces;
 
 namespace OrderMicroservice.Domain.Entities
 {
-    public class Order
+    public class Order : IAggregateRoot
     {
         public Guid OrderId { get; private set; }
-
-        //YUCK!!
+        public decimal PaidAmount { get; private set; }
+        public OrderStatus orderstatus { get; private set; }
+        public int Quantity { get; private set; }
         private readonly List<OrderItem> _items = new();
         private readonly List<IDomainEvent> _domainEvents = new();
 
         public DateTime CreatedAt { get; private set; }
 
-        //AsReadOnly - Kinda a good idea....
         public IReadOnlyCollection<OrderItem> Items => _items.AsReadOnly();
         public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
 

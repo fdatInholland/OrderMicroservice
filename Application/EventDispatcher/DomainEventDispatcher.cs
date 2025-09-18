@@ -11,13 +11,6 @@ namespace OrderMicroservice.Application.EventDispatcher
             _serviceProvider = serviceProvider;
         }
 
-        private readonly IEnumerable<object> _handlers;
-
-        public DomainEventDispatcher(IEnumerable<object> handlers)
-        {
-            _handlers = handlers;
-        }
-
         public async Task DispatchAsync(IEnumerable<IDomainEvent> domainEvents)
         {
             foreach (var domainEvent in domainEvents)

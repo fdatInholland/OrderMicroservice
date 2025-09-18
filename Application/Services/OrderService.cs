@@ -1,7 +1,6 @@
 ﻿using OrderMicroservice.Application.EventDispatcher;
 using OrderMicroservice.Domain.Entities;
 using OrderMicroservice.Domain.Interfaces;
-using OrderMicroservice.Infrastructure.Persistance;
 
 namespace OrderMicroservice.Application.Services
 {
@@ -10,7 +9,7 @@ namespace OrderMicroservice.Application.Services
         private readonly IOrderRepsitory _orderRepository;
         private readonly DomainEventDispatcher _dispatcher;
 
-        public OrderService(OrderRepository orderRepository, DomainEventDispatcher eventDispatcher)
+        public OrderService(IOrderRepsitory orderRepository, DomainEventDispatcher eventDispatcher)
         {
             _orderRepository = orderRepository;
             _dispatcher = eventDispatcher;

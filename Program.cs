@@ -18,8 +18,9 @@ namespace OrderMicroservice
                 opt.UseInMemoryDatabase("OrdersDb"));
 
             builder.Services.AddScoped<IOrderRepsitory, OrderRepository>();
-            builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<DomainEventDispatcher>();
+            builder.Services.AddScoped<IOrderService, OrderService>();
+           
             builder.Services.AddScoped<IEventHandler<OrderCreatedEvent>, OrderCreatedEventHandler>();
 
             builder.Services.AddControllers();

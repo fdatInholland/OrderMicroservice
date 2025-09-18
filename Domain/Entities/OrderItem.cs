@@ -8,7 +8,7 @@
 
         private OrderItem() { } // needed for EF Core
 
-        public OrderItem(Guid productId, int quantity, decimal unitPrice)
+        internal OrderItem(Guid productId, int quantity, decimal unitPrice)
         {
             //roll your own Exceptions!
             if (quantity <= 0) throw new ArgumentException("Quantity must be greater than zero");

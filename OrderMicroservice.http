@@ -1,0 +1,9 @@
+﻿@OrderMicroservice_HostAddress = https://localhost:7109
+
+POST {{OrderMicroservice_HostAddress}}/api/orders
+
+###
+
+POST {{OrderMicroservice_HostAddress}}/api/orders
+
+###

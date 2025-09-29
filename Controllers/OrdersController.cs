@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OrderMicroservice.Application.Services;
 
+
+//https://dev.to/andytechdev/step-by-step-guide-testing-http-endpoints-in-visual-studio-2022-using-endpoints-explorer-fpb
+
+
 namespace OrderMicroservice.Controllers
 {
     [Route("api/[controller]")]
@@ -15,7 +19,7 @@ namespace OrderMicroservice.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateOrder()
+        public async Task<IActionResult> TakeOrderPlease()
         {
             //var Email = EmailAddress.From("blaat@com");
             

@@ -6,7 +6,7 @@ namespace OrderMicroservice.Domain.Events
     {
         public Task Handle(OrderCreatedEvent domainEvent)
         {
-            // Log stuff ($"✅ Domain Event Handled: Order {domainEvent.OrderId} was created at {domainEvent.OccurredOn}") to TableStorage;
+            // Log stuff;
 
             return Task.CompletedTask;
         }

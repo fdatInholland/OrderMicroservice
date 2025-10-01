@@ -2,7 +2,7 @@
 
 namespace OrderMicroservice.Application.EventDispatcher
 {
-    public class DomainEventDispatcher
+    public class DomainEventDispatcher : IDomainEventDispatcher
     {
         private readonly IServiceProvider _serviceProvider;
 

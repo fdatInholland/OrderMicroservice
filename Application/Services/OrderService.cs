@@ -6,10 +6,10 @@ namespace OrderMicroservice.Application.Services
 {
     public class OrderService : IOrderService
     {
-        private readonly IOrderRepsitory _orderRepository;
-        private readonly DomainEventDispatcher _dispatcher;
+        private readonly IOrderRepsitory<Order> _orderRepository;
+        private readonly IDomainEventDispatcher _dispatcher;
 
-        public OrderService(IOrderRepsitory orderRepository, DomainEventDispatcher eventDispatcher)
+        public OrderService(IOrderRepsitory<Order> orderRepository, IDomainEventDispatcher eventDispatcher)
         {
             _orderRepository = orderRepository;
             _dispatcher = eventDispatcher;

@@ -4,7 +4,7 @@ using OrderMicroservice.Domain.Interfaces;
 
 namespace OrderMicroservice.Infrastructure.Persistance
 {
-    public class OrderRepository : IOrderRepsitory
+    public class OrderRepository : IOrderRepsitory<Order>
     {
         private readonly AppDbContext _context;
 

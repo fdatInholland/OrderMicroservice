@@ -17,7 +17,10 @@ namespace OrderMicroservice.Domain.Entities
         public IReadOnlyCollection<OrderItem> Items => _items.AsReadOnly();
         public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
 
-        public decimal Total => _items.Sum(i => i.GetTotal());
+        public decimal CalcTotalOrder()
+        {
+           return _items.Sum(i => i.GetTotal());
+        }
 
         //for EF Core
         private Order() { }
@@ -25,11 +28,12 @@ namespace OrderMicroservice.Domain.Entities
         public Order(Guid orderid)
         {
             OrderId = orderid;
-            CreatedAt = DateTime.UtcNow;
             orderstatus = OrderStatus.PendingPayment;
             PaidAmount = 0;
             Quantity = 0;
 
+            //better: have the orderitems added to the order before raising the event
+            //even better: all in a transactional way
             AddDomainEvent(new OrderCreatedEvent(orderid));
         }
 

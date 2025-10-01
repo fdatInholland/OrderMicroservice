@@ -10,6 +10,9 @@ namespace OrderMicroservice.Domain.Events
             // Send email 
             var Email = EmailAddress.From("blaat@com");
 
+            //get the create order -> to .pdf
+            //mail the pdf
+
             return Task.CompletedTask;
         }
     }

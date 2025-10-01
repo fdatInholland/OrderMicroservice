@@ -22,6 +22,7 @@ namespace OrderMicroservice
             builder.Services.AddScoped<IOrderService, OrderService>();
            
             builder.Services.AddScoped<IEventHandler<OrderCreatedEvent>, OrderCreatedEventHandler>();
+            builder.Services.AddScoped<IEventHandler<OrderCreatedEvent>, SendEmailOnOrderCreated>();
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();

@@ -15,22 +15,14 @@ namespace OrderMicroservice.Application.EventDispatcher
         {
             foreach (var domainEvent in domainEvents)
             {
-                var handlerType = typeof(object);
-
                 var eventType = domainEvent.GetType();
+                var handlerType = typeof(IEventHandler<>).MakeGenericType(eventType);
 
-                var handlerInterface = typeof(IEventHandler<>).MakeGenericType(eventType);
-
-                var handlers = _serviceProvider.GetServices(handlerInterface);
+                var handlers = _serviceProvider.GetServices(handlerType);
 
                 foreach (var handler in handlers)
                 {
-                    var method = handlerInterface.GetMethod("Handle");
-                    if (method is not null)
-                    {
-                        var result = method.Invoke(handler, new object[] { domainEvent });
-                        if (result is Task task) await task;
-                    }
+                    await ((dynamic)handler).Handle((dynamic)domainEvent);
                 }
             }
         }

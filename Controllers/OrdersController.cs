@@ -19,6 +19,7 @@ namespace OrderMicroservice.Controllers
         }
 
         [HttpPost]
+        [Route("create")]
         public async Task<IActionResult> TakeOrderPlease()
         {
             //var Email = EmailAddress.From("blaat@com");
@@ -26,5 +27,6 @@ namespace OrderMicroservice.Controllers
             var orderId = await _orderService.CreateOrderAsync();
             return Ok(new { OrderId = orderId });
         }
+
     }
 }

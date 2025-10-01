@@ -1,6 +1,7 @@
 ﻿using OrderMicroservice.Application.EventDispatcher;
 using OrderMicroservice.Domain.Entities;
 using OrderMicroservice.Domain.Interfaces;
+using OrderMicroservice.Infrastructure.Persistance;
 
 namespace OrderMicroservice.Application.Services
 {
@@ -36,6 +37,11 @@ namespace OrderMicroservice.Application.Services
             order.ClearDomainEvents();
 
             return order.OrderId;
+        }
+
+        public async Task<Order> getOrderById(Guid orderId)
+        {
+             return await _orderRepository.GetByIdAsync(orderId);
         }
     }
 }

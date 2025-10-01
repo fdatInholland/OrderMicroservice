@@ -9,11 +9,11 @@ namespace OrderMicroservice.Domain.Entities
         public decimal PaidAmount { get; private set; }
         public OrderStatus orderstatus { get; private set; }
         public int Quantity { get; private set; }
-        private readonly List<OrderItem> _items = new();
-        private readonly List<IDomainEvent> _domainEvents = new();
-
         public DateTime CreatedAt { get; private set; }
 
+        //ReadOnly : Good practice for DDD
+        private readonly List<OrderItem> _items = new();
+        private readonly List<IDomainEvent> _domainEvents = new();
         public IReadOnlyCollection<OrderItem> Items => _items.AsReadOnly();
         public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
 
@@ -26,6 +26,9 @@ namespace OrderMicroservice.Domain.Entities
         {
             OrderId = orderid;
             CreatedAt = DateTime.UtcNow;
+            orderstatus = OrderStatus.PendingPayment;
+            PaidAmount = 0;
+            Quantity = 0;
 
             AddDomainEvent(new OrderCreatedEvent(orderid));
         }

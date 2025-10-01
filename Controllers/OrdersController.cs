@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OrderMicroservice.Application.Services;
+using OrderMicroservice.Domain.Entities;
 
 
 //https://dev.to/andytechdev/step-by-step-guide-testing-http-endpoints-in-visual-studio-2022-using-endpoints-explorer-fpb
@@ -22,11 +23,14 @@ namespace OrderMicroservice.Controllers
         [Route("create")]
         public async Task<IActionResult> TakeOrderPlease()
         {
-            //var Email = EmailAddress.From("blaat@com");
-            
             var orderId = await _orderService.CreateOrderAsync();
+
+            //better to write a product service to get product ids
+            await _orderService.AddItemToOrderAsync(orderId, Guid.NewGuid(), 2, 11.99m);
+
+            Order ord = await _orderService.getOrderById(orderId);
+
             return Ok(new { OrderId = orderId });
         }
-
     }
 }

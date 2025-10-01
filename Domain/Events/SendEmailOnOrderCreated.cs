@@ -1,4 +1,5 @@
 ﻿using OrderMicroservice.Domain.Interfaces;
+using OrderMicroservice.Domain.ValueObjects;
 
 namespace OrderMicroservice.Domain.Events
 {
@@ -7,6 +8,8 @@ namespace OrderMicroservice.Domain.Events
         public Task Handle(OrderCreatedEvent domainEvent)
         {
             // Send email 
+            var Email = EmailAddress.From("blaat@com");
+
             return Task.CompletedTask;
         }
     }
